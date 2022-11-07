@@ -50,7 +50,9 @@ class Counter extends Thread {
          * This thread's purpose in life is to 
          * increase the value of the shared count by one
          */
-        int oldCount = count.getCount();
-        count.setCount(oldCount + 1);
+        synchronized (count) {
+            int oldCount = count.getCount();
+            count.setCount(oldCount + 1);
+        }
     }
 }

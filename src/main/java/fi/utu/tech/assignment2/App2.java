@@ -36,6 +36,8 @@ class ListEditor extends Thread {
 
     @Override
     public void run() {
-        l.add(123);
+        synchronized (l) {
+            l.add(123);
+        }
     }
 }
